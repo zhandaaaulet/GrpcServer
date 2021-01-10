@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcSE1Server";
+
+service Student {
+	rpc GetStudent (StudentLookup) returns (StudentInfo);
+	rpc GetAllStudents(AllStudentsLookup) returns (stream StudentInfo);
+}
+
+message AllStudentsLookup {
+
+}
+
+message StudentLookup {
+	int32 id = 1;
+}
+
+message UserInfo {
+	int32 id = 1;
+	string name = 2;
+	string surname = 3;
+	bool gender = 4;
+}
+
+message StudentInfo {
+	UserInfo user = 1;
+	double gpa = 2;
+}
